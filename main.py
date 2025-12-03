@@ -43,6 +43,22 @@ def robot():
         choix = random.randint(0,8)
     plateau[choix] = "O"
 
+#contre le joueur
+def counter():
+    print("le robot joue...")
+
+    for i in range(9):
+        if plateau[i] == " ":
+            plateau[i] = "X"
+            if verifier("X"):
+                plateau[i]= "O"
+                return
+            plateau[i] = " "
+    
+    
+    choix = random.choice([i for i in range(9) if plateau[i] == " "])
+    plateau[choix] = "O"
+
 #jeu pricipal
 def jouer():
     afficher_plateau()
@@ -50,7 +66,7 @@ def jouer():
         if tour % 2 == 0:
             joueur()
         else:
-            robot()
+            counter()
         afficher_plateau()
         
         if verifier("X"):
