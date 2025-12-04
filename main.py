@@ -39,7 +39,6 @@ def robot():
     print("le robot joue...")
     choix = random.randint(0,8)
     while plateau[choix] != " ":
-        print("salut")
         choix = random.randint(0,8)
     plateau[choix] = "O"
 
@@ -60,7 +59,7 @@ def counter():
     plateau[choix] = "O"
 
 #jeu pricipal
-def jouer():
+def jouer_ia():
     afficher_plateau()
     for tour in range(9):
         if tour % 2 == 0:
@@ -77,4 +76,31 @@ def jouer():
             return
     print("égalité")    
 
+def jouer_normal():
+    afficher_plateau()
+    for tour in range(9):
+        if tour % 2 == 0:
+            joueur()
+        else:
+            robot()
+        afficher_plateau()
+        
+        if verifier("X"):
+            print("Victoire")
+            return
+        elif verifier("O"):
+            print("Défaite")   
+            return
+    print("égalité")    
+
+def jouer():
+    ia=input("ia or normal : ")
+    if ia == "ia":
+        return jouer_ia()
+    elif ia == "normal":
+        return jouer_normal()
+    else:
+        print("invalid")
+        return jouer ()
+    
 jouer()
