@@ -58,7 +58,7 @@ def counter():
     choix = random.choice([i for i in range(9) if plateau[i] == " "])
     plateau[choix] = "O"
 
-#jeu pricipal
+#jeux pricipal(ia)
 def jouer_ia():
     afficher_plateau()
     for tour in range(9):
@@ -76,6 +76,7 @@ def jouer_ia():
             return
     print("égalité")    
 
+#jeux principal(normal)
 def jouer_normal():
     afficher_plateau()
     for tour in range(9):
